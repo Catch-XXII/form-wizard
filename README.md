@@ -1,11 +1,13 @@
 # Form-Wizard
-A project developed to test automation scenarios on the DemoQA Practice Form page. This project automates the process of form filling and validation, analyzes test results, and runs seamlessly in a continuous integration/delivery (CI/CD) environment with Jenkins integration.
+A project developed to test automation scenarios on the DemoQA Practice Form page. 
+This project automates the process of form filling and validation, analyzes test results, 
+and runs seamlessly in a continuous integration/delivery (CI/CD) environment with Jenkins integration.
 
 ## Installation
 
 ### Prerequisites
 
-- Python 3.x
+- Python 3.13
 - pip (Python package installer)
 - Jenkins (for continuous integration)
 ### Steps
@@ -15,8 +17,8 @@ A project developed to test automation scenarios on the DemoQA Practice Form pag
 Windows Users Only
 
    ```bash
-   git clone https://github.com/your-username/WebUIAutomation.git
-   cd WebUIAutomation
+   git clone https://github.com/Catch-XXII/form-wizard.git
+   cd form-wizard
    python -m virtualenv venv
    \.venv\Scripts\activate.bat
    pip install -r requirements.txt
