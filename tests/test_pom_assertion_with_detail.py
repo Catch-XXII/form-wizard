@@ -1,7 +1,8 @@
-from utilities.phone_number_generator import generate_phone_number
 from pages.practice_form_page import PracticeFormPage
+from base.utils import generate_phone_number
 from tests.base_test import TestBasePage
 import os
+
 
 class TestPracticeForm(TestBasePage):
     def test_assert_with_detail_pom(self, browser):
@@ -54,22 +55,31 @@ class TestPracticeForm(TestBasePage):
         register.fill_calendar(
             register.dob, self._YEAR, self._DATE_OF_BIRTH
         )
+
+        # Subjects
         register.multiple_selection(
             register.subjects, self._SUBJECT_1, self._SUBJECT_2
         )
+
+        # Hobbies
         register.retrieve_and_click_by(self._SPORTS)
         register.retrieve_and_click_by(self._READING)
         register.retrieve_and_click_by(self._MUSIC)
 
+        # Upload Picture
         project_directory = os.path.abspath(os.path.dirname(__file__))
-        file_path = os.path.join(project_directory, "cuneyd.jpg")
+        file_path = os.path.join(project_directory, self._FILE_NAME)
         if not os.path.exists(file_path):
             raise FileNotFoundError(f"File not found: {file_path}")
         register.upload_file("input[type='file']", file_path)
 
+        # Address
         register.fill_text(register.address, self._ADDRESS)
+
+        # State and City
         register.drop_down_selection(register.state, self._STATE)
         register.drop_down_selection(register.city, self._CITY)
+
         # Submit
         register.submit_form(register.submit_button)
         result = register.is_valid()

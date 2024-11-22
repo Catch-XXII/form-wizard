@@ -1,7 +1,7 @@
-from utilities.current_date_time import formatted_date
-from utilities.phone_number_generator import generate_phone_number
 from pages.practice_form_page import PracticeFormPage
+from base.utils import generate_phone_number
 from tests.base_test import TestBasePage
+from base.utils import formatted_date
 
 
 class TestPracticeForm(TestBasePage):
