@@ -63,3 +63,17 @@ A brief overview of the project structure:
 - **`install.bat`**: Batch file for setting up Jenkins or other environments.
 - **`pytest.ini`**: Configuration settings for Pytest.
 - **`tests/`**: Directory containing test cases.
+
+
+## Jenkins Settings
+Workspace view
+
+media/workspace.png
+
+Trigger for every 5 minutes
+
+media/every_five_minutes.png
+
+Successful Build Results Screenshot
+
+media/builds_every_five_minutes.png
