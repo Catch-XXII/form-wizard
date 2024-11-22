@@ -15,6 +15,8 @@ class TestBasePage(object):
     _SPORTS = "Sports"
     _READING = "Reading"
     _MUSIC = "Music"
+    _FILE_NAME = "cuneyd.jpg"
     _ADDRESS = "Jonquil, Grandchild Center, Big Stream Avenue Shishli/İstanbul"
     _STATE = "Haryana"
     _CITY = "Panipat"
+

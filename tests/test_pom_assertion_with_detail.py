@@ -61,8 +61,10 @@ class TestPracticeForm(TestBasePage):
         register.retrieve_and_click_by(self._READING)
         register.retrieve_and_click_by(self._MUSIC)
 
-        project_directory = os.getcwd()
-        file_path = os.path.join(project_directory, "tests", "cuneyd.jpg")
+        project_directory = os.path.abspath(os.path.dirname(__file__))
+        file_path = os.path.join(project_directory, "cuneyd.jpg")
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"File not found: {file_path}")
         register.upload_file("input[type='file']", file_path)
 
         register.fill_text(register.address, self._ADDRESS)
