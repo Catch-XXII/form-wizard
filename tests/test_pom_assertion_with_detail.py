@@ -1,7 +1,7 @@
 from utilities.phone_number_generator import generate_phone_number
 from pages.practice_form_page import PracticeFormPage
 from tests.base_test import TestBasePage
-
+import os
 
 class TestPracticeForm(TestBasePage):
     def test_assert_with_detail_pom(self, browser):
@@ -60,10 +60,11 @@ class TestPracticeForm(TestBasePage):
         register.retrieve_and_click_by(self._SPORTS)
         register.retrieve_and_click_by(self._READING)
         register.retrieve_and_click_by(self._MUSIC)
-        register.upload_file(
-            "input[type='file']",
-            r"C:\Users\cuneyd.kaya\dev\WebUIAutomation\tests\cuneyd.jpg",
-        )
+
+        project_directory = os.getcwd()
+        file_path = os.path.join(project_directory, "tests", "cuneyd.jpg")
+        register.upload_file("input[type='file']", file_path)
+
         register.fill_text(register.address, self._ADDRESS)
         register.drop_down_selection(register.state, self._STATE)
         register.drop_down_selection(register.city, self._CITY)
@@ -118,12 +119,12 @@ class TestPracticeForm(TestBasePage):
             selector=register.validation_table,
             text=f"{self._SPORTS}, {self._READING}, {self._MUSIC}",
         )
+        register.expect_contain_text(selector=register.validation_table, text="cuneyd.jpg")
 
         register.expect_contain_text(
             selector=register.validation_table,
             text=f"{self._ADDRESS}",
         )
-
         register.expect_contain_text(
             selector=register.validation_table,
             text=f"{self._STATE} {self._CITY}",

@@ -1,6 +1,5 @@
-from pages.base_page import BasePage
 from playwright.sync_api import Page
-
+from pages import BasePage
 
 class PracticeFormPage(BasePage):
     def __init__(self, page: Page):
