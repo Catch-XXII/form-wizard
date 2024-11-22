@@ -1,11 +1,10 @@
 from utilities.phone_number_generator import generate_phone_number
 from pages.practice_form_page import PracticeFormPage
 from tests.base_test import TestBasePage
-from playwright.sync_api import Page
 
 
 class TestPracticeForm(TestBasePage):
-    def test_assert_with_detail_pom(self, page: Page):
+    def test_assert_with_detail_pom(self, browser):
         """
         1 Go to https://demoqa.com/
         2 Assert web page title == DEMOQA
@@ -36,7 +35,10 @@ class TestPracticeForm(TestBasePage):
         """
         # This variable will be used later on for assertion
         ten_digit_phone_number = generate_phone_number(10)
-
+        context = browser.new_context(
+            viewport={"width": 1920, "height": 1200}
+        )
+        page = context.new_page()
         register = PracticeFormPage(page)
         register.navigate_to_url(self._URL)
         register.has_title(self._TITLE)
