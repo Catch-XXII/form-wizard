@@ -66,14 +66,18 @@ A brief overview of the project structure:
 
 
 ## Jenkins Settings
-Workspace view
+1. **Workspace view**
 ![Alt text](media/workspace.png)
 
 
-Trigger for every 5 minutes
+2. **Trigger for every 5 minutes**
 ![Alt text](media/every_five_minutes.png)
 
 
-Successful Build Results Screenshot
+3. **Successful Build Results Screenshot**
 ![Alt text](media/builds_every_five_minutes.png)
+
+4. **Build Steps Configuration with install.bat**
+![Alt text](media/build_steps_jenkins.png)
+
 
