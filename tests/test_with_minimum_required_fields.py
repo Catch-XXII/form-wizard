@@ -1,10 +1,9 @@
 from pages.practice_form_page import PracticeFormPage
 from base.utils import generate_phone_number
-from tests.base_test import TestBasePage
 from base.utils import formatted_date
 
 
-class TestPracticeForm(TestBasePage):
+class TestPracticeForm:
     def test_with_minimum_required_fields(self, browser):
         """
         1 Go to https://demoqa.com/
@@ -32,23 +31,23 @@ class TestPracticeForm(TestBasePage):
         )
         page = context.new_page()
         register = PracticeFormPage(page)
-        register.navigate_to_url(self._URL)
-        register.has_title(self._TITLE)
+        register.navigate_to_url(register._URL)
+        register.has_title(register._TITLE)
         register.retrieve_and_click_by("Forms")
         register.retrieve_and_click_by("Practice Form")
-        register.expect_contain_text("h1", self._PAGE_TITLE)
-        register.expect_contain_text("h5", self._FORM_TITLE)
-        register.first_name.fill(self._FIRST_NAME)
+        register.expect_contain_text("h1", register._PAGE_TITLE)
+        register.expect_contain_text("h5", register._FORM_TITLE)
+        register.first_name.fill(register._FIRST_NAME)
 
         register.submit_form(register.submit_button)
         result = register.is_valid()
         if not result:
-            register.last_name.fill(self._LAST_NAME)
+            register.last_name.fill(register._LAST_NAME)
 
         register.submit_form(register.submit_button)
         result = register.is_valid()
         if not result:
-            register.select_from_radio_button(self._GENDER)
+            register.select_from_radio_button(register._GENDER)
 
         register.submit_form(register.submit_button)
         result = register.is_valid()
@@ -63,12 +62,12 @@ class TestPracticeForm(TestBasePage):
             # Assertion Section
             register.expect_contain_text(
                 selector=register.validation_table,
-                text=f"{self._FIRST_NAME} {self._LAST_NAME}",
+                text=f"{register._FIRST_NAME} {register._LAST_NAME}",
             )
 
             register.expect_contain_text(
                 selector=register.validation_table,
-                text=f"{self._GENDER}",
+                text=f"{register._GENDER}",
             )
 
             register.expect_contain_text(
