@@ -1,6 +1,9 @@
 class TestBasePage(object):
     # Variables
     _URL = "https://demoqa.com/"
+    _TITLE = "DEMOQA"
+    _PAGE_TITLE = "Practice Form"
+    _FORM_TITLE = "Student Registration Form"
     _FIRST_NAME = "John"
     _LAST_NAME = "Doe"
     _EMAIL = "b@b"
@@ -15,6 +18,3 @@ class TestBasePage(object):
     _ADDRESS = "Jonquil, Grandchild Center, Big Stream Avenue Shishli/İstanbul"
     _STATE = "Haryana"
     _CITY = "Panipat"
-    _TITLE = "DEMOQA"
-    _PAGE_TITLE = "Practice Form"
-    _FORM_TITLE = "Student Registration Form"

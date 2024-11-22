@@ -9,25 +9,13 @@ class BasePage:
         self.page.goto(url)
 
     def fill_text(self, selector: str, text: str):
-        self.page.locator(selector).click()
         self.page.locator(selector).fill(text)
-
-    def click_element(self, selector: str):
-        self.page.locator(selector).click()
 
     def upload_file(self, selector: str, file_path: str):
         self.page.set_input_files(selector, file_path)
 
-    def select_from_dropdown(self, selector: str, value: str):
-        self.page.select_option(selector, value)
-
     def select_from_radio_button(self, value: str):
         self.page.get_by_text(value, exact=True).click()
-
-    def check_checkbox(self, selector: str):
-        checkbox = self.page.locator(selector)
-        if not checkbox.is_checked():
-            checkbox.click()
 
     def submit_form(self, selector: str):
         self.page.locator(selector).click()
@@ -46,7 +34,7 @@ class BasePage:
         self.page.get_by_role("combobox").nth(1).select_option(year)
         self.page.get_by_label(dob).click()
 
-    def fill_multiple_selection(self, selector, option1, option2):
+    def multiple_selection(self, selector, option1, option2):
         self.page.locator(selector).fill(option1)
         self.retrieve_and_click_by("Computer Science")
         self.page.locator(selector).fill(option2)

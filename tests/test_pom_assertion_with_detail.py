@@ -7,32 +7,32 @@ from playwright.sync_api import Page
 class TestPracticeForm(TestBasePage):
     def test_assert_with_detail_pom(self, page: Page):
         """
-        # Go to https://demoqa.com/
-        # Assert web page title == DEMOQA
-        # Click on "Forms"
-        # Click on "Practice Form"
-        # See Form loaded and Assert Title
-        # Assert form name == Student Registration Form
-        # Fill Name fields
-        # First Name = John Last Name = Doe
-        # Email = b@b
-        # Gender = Male
-        # Mobile = 123456789
-        # Date of Birth = Choose Saturday, November 4th 2000
-        # Subjects = Computer Science, English
-        # Hobbies = Select all options
-        # Picture = Upload local picture
-        # Current Address = Jonquil, Grandchild Center, Big Stream Avenue Shishli/İstanbul
-        # State = Haryana
-        # City = Panipat
-        # Click on Submit button
-        # This will give you a validation error go back and fill missing fields
-        # Assert document.querySelector("#userForm").checkValidity() == False
-        # if not result:
-        # email address with .com
-        # 10 digit mobile phone number
-        # Again Submit
-        # See Table and make assertion for every field
+        1 Go to https://demoqa.com/
+        2 Assert web page title == DEMOQA
+        3 Click on "Forms"
+        4 Click on "Practice Form"
+        5 See Form loaded and Assert Title
+        6 Assert form name == Student Registration Form
+        7 Fill Name fields
+        8 First Name = John Last Name = Doe
+        9 Email = b@b
+        10 Gender = Male
+        11 Mobile = 123456789
+        12 Date of Birth = Choose Saturday, November 4th 2000
+        13 Subjects = Computer Science, English
+        14 Hobbies = Select all options
+        15 Picture = Upload local picture
+        16 Current Address = Jonquil, Grandchild Center, Big Stream Avenue Shishli/İstanbul
+        17 State = Haryana
+        18 City = Panipat
+        19 Click on Submit button
+            This will give you a validation error go back and fill missing fields
+            Assert document.querySelector("#userForm").checkValidity() == False
+            if not result:
+        20 email address with .com
+        21 10 digit mobile phone number
+        22 Again Submit
+            See Table and make assertion for every field
         """
         # This variable will be used later on for assertion
         ten_digit_phone_number = generate_phone_number(10)
@@ -52,7 +52,7 @@ class TestPracticeForm(TestBasePage):
         register.fill_calendar(
             register.dob, self._YEAR, self._DATE_OF_BIRTH
         )
-        register.fill_multiple_selection(
+        register.multiple_selection(
             register.subjects, self._SUBJECT_1, self._SUBJECT_2
         )
         register.retrieve_and_click_by(self._SPORTS)
