@@ -26,6 +26,7 @@ class TestPracticeForm:
         # See Table and make assertion for each field accordingly
         """
         ten_digit_phone_number = generate_phone_number(10)
+
         register = PracticeFormPage(browser)
         register.navigate_to_url(register._URL)
         register.has_title(register._TITLE)
@@ -33,12 +34,12 @@ class TestPracticeForm:
         register.retrieve_and_click_by("Practice Form")
         register.expect_contain_text("h1", register._PAGE_TITLE)
         register.expect_contain_text("h5", register._FORM_TITLE)
-        register.first_name.fill(register._FIRST_NAME)
+        register.fill_text(register.first_name, register._FIRST_NAME)
 
         register.submit_form(register.submit_button)
         result = register.is_valid()
         if not result:
-            register.last_name.fill(register._LAST_NAME)
+            register.fill_text(register.last_name, register._LAST_NAME)
 
         register.submit_form(register.submit_button)
         result = register.is_valid()
@@ -49,7 +50,7 @@ class TestPracticeForm:
         result = register.is_valid()
 
         if not result:
-            register.mobile_phone_number.fill(ten_digit_phone_number)
+            register.fill_text(register.mobile_phone_number, ten_digit_phone_number)
 
         register.submit_form(register.submit_button)
         result = register.is_valid()

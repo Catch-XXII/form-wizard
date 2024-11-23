@@ -35,6 +35,7 @@ class TestPracticeForm:
         """
         # This variable will be used later on for assertion
         ten_digit_phone_number = generate_phone_number(10)
+
         register = PracticeFormPage(browser)
         register.navigate_to_url(register._URL)
         register.has_title(register._TITLE)
@@ -42,11 +43,11 @@ class TestPracticeForm:
         register.retrieve_and_click_by("Practice Form")
         register.expect_contain_text("h1", register._PAGE_TITLE)
         register.expect_contain_text("h5", register._FORM_TITLE)
-        register.first_name.fill(register._FIRST_NAME)
-        register.last_name.fill(register._LAST_NAME)
-        register.email.fill(register._EMAIL)
+        register.fill_text(register.first_name, register._FIRST_NAME)
+        register.fill_text(register.last_name, register._LAST_NAME)
+        register.fill_text(register.email, register._EMAIL)
         register.select_from_radio_button(register._GENDER)
-        register.mobile_phone_number.fill(generate_phone_number(9))
+        register.fill_text(register.mobile_phone_number, generate_phone_number(9))
         register.fill_calendar(register.dob, register._YEAR, register._DATE_OF_BIRTH)
 
         # Subjects
@@ -78,13 +79,12 @@ class TestPracticeForm:
         result = register.is_valid()
 
         if not result:
-            register.email.click()
-            register.email.clear()
-            register.email.fill(f"{register._EMAIL}.com")
-
-            register.mobile_phone_number.click()
-            register.mobile_phone_number.clear()
-            register.mobile_phone_number.fill(ten_digit_phone_number)
+            register.click_element(register.email)
+            register.clear_element(register.email)
+            register.fill_text(register.email, f"{register._EMAIL}.com")
+            register.click_element(register.mobile_phone_number)
+            register.clear_element(register.mobile_phone_number)
+            register.fill_text(register.mobile_phone_number, ten_digit_phone_number)
 
         # Second Submit after correction
         register.submit_form(register.submit_button)

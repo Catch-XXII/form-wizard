@@ -23,6 +23,12 @@ class BasePage:
     def retrieve_and_click_by(self, text):
         self.page.get_by_text(text, exact=True).click()
 
+    def click_element(self, selector):
+        self.page.locator(selector).click()
+
+    def clear_element(self, selector):
+        self.page.locator(selector).clear()
+
     def has_title(self, title):
         expect(self.page).to_have_title(title)
 
