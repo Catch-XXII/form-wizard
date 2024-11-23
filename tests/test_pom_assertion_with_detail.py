@@ -47,6 +47,8 @@ class TestPracticeForm:
         register.fill_text(register.last_name, register._LAST_NAME)
         register.fill_text(register.email, register._EMAIL)
         register.select_from_radio_button(register._GENDER)
+        # First assertion for gender boolean
+        register.is_checked(register._GENDER)
         register.fill_text(register.mobile_phone_number, generate_phone_number(9))
         register.fill_calendar(register.dob, register._YEAR, register._DATE_OF_BIRTH)
 
@@ -99,7 +101,7 @@ class TestPracticeForm:
             selector=register.validation_table,
             text=f"{register._EMAIL}.com",
         )
-
+        # Second assertion for gender is String. Is "Male" selection in the table?
         register.expect_contain_text(
             selector=register.validation_table,
             text=f"{register._GENDER}",

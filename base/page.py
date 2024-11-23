@@ -15,7 +15,10 @@ class BasePage:
         self.page.set_input_files(selector, file_path)
 
     def select_from_radio_button(self, value: str):
-        self.page.get_by_text(value, exact=True).click()
+        self.page.get_by_text(value, exact=True).check()
+
+    def is_checked(self, value):
+        expect(self.page.get_by_text(value, exact=True)).to_be_checked()
 
     def submit_form(self, selector: str):
         self.page.locator(selector).click()

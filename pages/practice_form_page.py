@@ -29,7 +29,6 @@ class PracticeFormPage(BasePage):
         self.first_name = "id=firstName"
         self.last_name = "id=lastName"
         self.email = "id=userEmail"
-        self.gender = page.locator("id=gender-radio-1")
         self.mobile_phone_number = "id=userNumber"
         self.dob = "#dateOfBirthInput"
         self.subjects = "#subjectsInput"

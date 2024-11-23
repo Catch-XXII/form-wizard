@@ -46,6 +46,8 @@ class TestPracticeForm:
         if not result:
             register.select_from_radio_button(register._GENDER)
 
+        register.is_checked(register._GENDER)
+
         register.submit_form(register.submit_button)
         result = register.is_valid()
 
