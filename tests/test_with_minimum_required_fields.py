@@ -26,11 +26,7 @@ class TestPracticeForm:
         # See Table and make assertion for each field accordingly
         """
         ten_digit_phone_number = generate_phone_number(10)
-        context = browser.new_context(
-            viewport={"width": 1920, "height": 1200}
-        )
-        page = context.new_page()
-        register = PracticeFormPage(page)
+        register = PracticeFormPage(browser)
         register.navigate_to_url(register._URL)
         register.has_title(register._TITLE)
         register.retrieve_and_click_by("Forms")

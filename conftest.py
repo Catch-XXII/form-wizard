@@ -9,5 +9,7 @@ def browser():
             headless=False,
             slow_mo=750,
         )
-        yield browser
+        context = browser.new_context(viewport={"width": 1920, "height": 1200})
+        page = context.new_page()
+        yield page
         browser.close()
