@@ -1,3 +1,5 @@
+import re
+
 from playwright.sync_api import Page, expect
 
 
@@ -40,6 +42,11 @@ class BasePage:
 
     def fill_calendar(self, selector, year, dob):
         self.page.locator(selector).click()
+        self.page.locator("div").filter(
+            has_text=re.compile(
+                r"^JanuaryFebruaryMarchAprilMayJuneJulyAugustSeptemberOctoberNovemberDecember$"
+            )
+        ).get_by_role("combobox").select_option("10")
         self.page.get_by_role("combobox").nth(1).select_option(year)
         self.page.get_by_label(dob).click()
 
